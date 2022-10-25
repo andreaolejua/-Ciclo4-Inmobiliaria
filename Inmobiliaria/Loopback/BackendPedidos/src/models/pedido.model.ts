@@ -1,6 +1,7 @@
 import {Entity, model, property, hasMany, hasOne} from '@loopback/repository';
 import {Inmueble} from './inmueble.model';
 import {Usuario} from './usuario.model';
+import {Solicitud} from './solicitud.model';
 
 @model()
 export class Pedido extends Entity {
@@ -39,6 +40,14 @@ export class Pedido extends Entity {
 
   @hasOne(() => Usuario)
   usuario: Usuario;
+
+  @hasOne(() => Solicitud)
+  solicitud: Solicitud;
+
+  @property({
+    type: 'string',
+  })
+  solicitudId?: string;
 
   constructor(data?: Partial<Pedido>) {
     super(data);
